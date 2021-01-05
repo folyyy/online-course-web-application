@@ -1,0 +1,55 @@
+.registerSection {
+    width: 50%;
+    height: fit-content;
+    margin: 0 auto;
+    background-color: #f1f0f0b4;
+    border-radius: 5px;
+}
+
+.registerSection > * {
+    padding: 0 5% 0 5%;
+}
+
+.registerSection > h1 {
+    color: rgba(0, 0, 0, 0.800);
+    padding-top: 20px;
+}
+
+.registerTextInput {
+    display: block;
+    width: 100%;
+    height: 25px;
+    padding-left: 5px;
+    margin: 10px 0px 10px 0;
+}
+
+.registerForm > label > select{
+    width: 30%;
+}
+
+.registerTextInput:focus {
+    outline: 1px solid #4CAF50; 
+}
+
+#registerSubmitButton {
+    height: 30px;
+    width: fit-content;
+    background-color: #4CAF50;
+    border: none;
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+}
+
+#registerSubmitButton:hover {
+    cursor: pointer;
+    background-color: #306ae7dc;
+}
+
+#registerSubmitButton:focus {
+    outline: none;
+}
+
+#rule {
+    color: #757575;
+}

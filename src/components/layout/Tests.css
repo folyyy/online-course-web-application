@@ -1,0 +1,20 @@
+.testsItem {
+    float: left;
+    margin-right: 100px;
+    width: 150px;
+    height: 250px;
+}
+
+.testsItem > a > img {
+    width: 140px;
+}
+
+.testsItem > p {
+    width: 140px;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.testsItemForm > li {
+    list-style-type: none;
+}

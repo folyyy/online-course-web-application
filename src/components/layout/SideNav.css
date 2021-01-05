@@ -1,0 +1,94 @@
+html, body { 
+    height: 100%;
+}
+
+.sideNav {
+    position: fixed;
+    width: 75px;
+    height: 100%;
+    background-color: #052031d0;
+}
+
+#profilePic {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+    /* padding-left: 10px;
+    padding-top: 10px; */
+}
+
+.category {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category > li {
+    margin: 0;
+    padding: 0;
+}
+
+.subCategory {
+    display: block;
+    box-sizing: border-box;
+    width: 200px;
+    height: 100%;
+    visibility: hidden;
+    position: absolute;
+    left: 75px;
+    top: 0;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    /* background-color: rgb(210, 220, 230); */
+}
+
+.category > li:hover .subCategory {
+    visibility: visible;
+    transform: scaleX(1);
+    transition: .5s ease-in-out;
+    background: rgb(210, 220, 230);
+}
+
+.category > li:hover {
+    background-color: #ffffff5c;
+}
+
+.sideNav > ul > li {
+    width: 80px;
+}
+
+#categoryPic {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.subCategory > h3{
+    color: #05203146;
+    text-align: center;
+}
+
+.subCategory > p > a {
+    margin-left: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #052031b6;
+    font-weight: bold;
+}
+
+#sideNavButton {
+    background: none!important;
+    border: none!important;
+    padding: 0!important;
+    outline: 0!important;
+    cursor: pointer;
+    margin-left: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #052031b6;
+    font-weight: bold;
+    font-size: 1rem;
+}

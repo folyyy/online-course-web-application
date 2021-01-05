@@ -1,0 +1,30 @@
+.contentHead {
+    overflow: auto;
+    margin-left: 75px;
+    display: block;
+    width: auto;
+    border-bottom: #CFCDD1 1px solid;
+  }
+  
+  .contentHead > h1{
+    float: left;
+    margin-left: 25px;
+    color: #000000b6;
+    font-size: 1.8rem;
+  }
+  
+  .contentHead > button {
+    float: right;
+    margin: 25px 25px 0 0;
+    width: 75px;
+    background: none!important;
+    border: none!important;
+    padding: 0!important;
+    outline: 0!important;
+    cursor: pointer;
+    text-decoration: none;
+    color: #052031b6;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  

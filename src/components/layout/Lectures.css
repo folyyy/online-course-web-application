@@ -1,0 +1,41 @@
+.lecturesList {
+    background-color: #052031d0;
+    width: 98.7%;
+    min-height: 300px;
+    border-radius: 5px;
+}
+
+#ReactPlayer {
+    margin: 0 auto;
+    margin-top: 25px;
+    padding-top: 25px;
+}
+
+.listItem {
+    margin-top: 20px;
+    margin-right: 100px;
+    overflow: hidden;
+    border: 1px solid white;
+}
+
+.listItem > img {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    float: left;
+    cursor: pointer;
+}
+
+.listItem > h3 {
+    margin-left: 20px;
+    color: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+}
+
+.listItem > h3:active {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.listItem > h4 {
+    margin-left: 150px;
+    color: rgba(255, 255, 255, 0.8);
+}

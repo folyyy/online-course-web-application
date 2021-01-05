@@ -1,0 +1,45 @@
+.popup {
+    position: fixed;
+    width: 400px;
+    height: 230px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+  }
+
+  .popupContent {
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 15%;
+    bottom: 100%;
+    margin: auto;
+    background: white;
+  }
+
+  .popupContent > h1 {
+      text-align: center;
+      color: rgba(0, 0, 0, 0.800);
+  }
+
+  .popupContent > button {
+    background-color: rgba(0, 0, 0, 0.800);
+    border: none;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .popupContent > button:hover {
+    cursor: pointer;
+    background-color: #4CAF50;
+  }
+
+  .popupContent > button:focus {
+    outline: none;
+  }

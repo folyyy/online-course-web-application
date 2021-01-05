@@ -1,0 +1,16 @@
+.contactsSection {
+    width: 50%;
+    height: fit-content;
+    margin: 0 auto;
+    background-color: #f1f0f0b4;
+    border-radius: 5px;
+}
+
+.contactsSection > * {
+    padding: 0 5% 5% 5%;
+}
+
+.contactsSection > h1 {
+    color: rgba(0, 0, 0, 0.800);
+    padding-top: 20px;
+}

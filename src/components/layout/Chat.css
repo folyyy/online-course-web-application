@@ -1,0 +1,139 @@
+.usersFieldBody {
+    margin-left: 100px;
+    display: block;
+    margin-top: 50px;
+    width: 20%;
+    min-height: 400px;
+    max-height: 400px;
+    border: #CFCDD1 1px solid;
+    overflow: auto;
+}
+
+.userItem {
+    display: block;
+    box-sizing: border-box;
+    margin-left: 10px;
+    /* width: calc(25% - 10px); */
+    width: 230px;
+    height: 70px;
+}
+
+.userItem:hover {
+    background-color: #306ae710;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#friendAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left;
+}
+
+.friendName {
+    padding-top: 15px;
+    margin-left: 60px;
+    font-weight: 600;
+}
+
+.chatFieldBody {
+    /* margin-left: 102px; */
+    display: block;
+    position: absolute;
+    left: calc(25.13%);
+    bottom: 412px;
+    /* margin-top: 700px; */
+    width: 50%;
+    min-height: 400px;
+    max-height: 400px;
+    border: #CFCDD1 1px solid;
+    overflow: auto;
+}
+
+#messageItem {
+    display: block;
+    overflow: auto;
+    margin-left: 10px;
+    /* position: relative; */
+    /* top: 140px; */
+    /* left: 400px; */
+}
+
+#messageInput {
+    /* position: static; */
+    top: 85%;
+    float: left;
+    display: block;
+    width: 80%;
+    height: 25px;
+    padding-left: 5px;
+    margin: 10px 0px 10px 10px;
+    overflow: scroll;
+}
+
+#messageInput:focus {
+    outline: none; 
+}
+
+#messageSendingButton {
+    /* position: relative; */
+    top: 85%;
+    /* left: 82%; */
+    height: 31px;
+    width: 100px;
+    background-color: #306ae7dc;
+    border: none;
+    text-align: center;
+    color: white;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+#messageSendingButton:hover {
+    cursor: pointer;
+    background-color: #4CAF50;
+}
+
+#messageSendingButton:focus {
+    outline: none;
+}
+
+#addFriendInput {
+    /* position: static; */
+    /* top: 85%; */
+    float: left;
+    display: block;
+    width: 150px;
+    height: 25px;
+    padding-left: 5px;
+    margin: 10px 0px 10px 10px;
+    overflow: scroll;
+}
+
+#addFriendInput:focus {
+    outline: none; 
+}
+
+#addFriendButton {
+    /* position: relative; */
+    /* top: 85%; */
+    /* left: 82%; */
+    height: 31px;
+    width: 160px;
+    background-color: #306ae7dc;
+    border: none;
+    text-align: center;
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#addFriendButton:hover {
+    cursor: pointer;
+    background-color: #4CAF50;
+}
+
+#addFriendButton:focus {
+    outline: none;
+}

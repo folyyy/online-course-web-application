@@ -1,0 +1,44 @@
+#usersGroup {
+    margin-left: 16px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.800);
+}
+
+.scheduleItem {
+    float: left;
+    margin-right: 100px;
+    width: 150px;
+    height: 250px;
+}
+
+.scheduleItem > a > img {
+    width: 140px;
+}
+
+.scheduleItem > p {
+    width: 140px;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.handleSchedule {
+    margin: 20px 0 20px 8px;
+}
+
+.handleSchedule > form > input {
+    margin-left: 10px;
+    width: fit-content;
+    height: 25px;
+    padding-left: 5px;
+}
+
+#handleScheduleButton {
+    height: 30px;
+    width: fit-content;
+    background-color: #000000b6;
+    border: none;
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+}

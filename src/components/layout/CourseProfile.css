@@ -1,0 +1,57 @@
+.contentBody {
+  clear: both;
+  overflow: auto;
+  margin-left: 100px;
+}
+
+.userInfo {
+  float: left;
+  width: 30%;
+}
+
+.userInfo > p > label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #000000b6;
+}
+
+.userInfo > p > label > input {
+  display: block;
+  width: 300px;
+  height: 25px;
+  padding-left: 5px;
+  margin: 10px 0px 10px 0;
+}
+
+.infoChange {
+  float: left;
+  width: 100%;
+  margin-bottom: 100px  ;
+}
+
+.infoChange > p > label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #000000b6;
+}
+
+.imgPreview {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 10px;
+  border-left: 5px solid #CFCDD1;
+  border-right: 5px solid #CFCDD1;
+  border-top: 5px solid #CFCDD1;
+  border-bottom: 5px solid #CFCDD1;
+}
+
+#previewImage {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+.imageButton {
+  cursor: pointer;
+  margin-left: 10px;
+}
