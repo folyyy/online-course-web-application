@@ -1,0 +1,36 @@
+.supportSection {
+    width: 50%;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 300px;
+    background-color: #f1f0f0b4;
+    border-radius: 5px;
+}
+
+#supportTicketTextInput {
+    margin: 10px 10px 10px 10px;
+    height: 240px;
+    width: 97%;
+}
+
+#supportTicketTextInput:focus {
+    outline: 1px solid #4CAF50; 
+}
+
+#supportTicketButton {
+    margin-left: 10px;
+    width: 97.8%;
+    background-color: #4CAF50;
+    border: none;
+    text-align: center;
+    color: white;
+}
+
+#supportTicketButton:hover {
+    cursor: pointer;
+    background-color: #306ae7dc;
+}
+
+#supportTicketButton:focus {
+    outline: none;
+}

@@ -3,6 +3,7 @@ import '../layout/Support.css'
 import SideNav from '../layout/SideNav'
 import Cookies from 'js-cookie'
 import ContentHead from '../layout/ContentHead'
+import Popup from '../layout/Popup'
 
 export default class Support extends Component {
     constructor(props) {
@@ -13,9 +14,20 @@ export default class Support extends Component {
             image: '',
             id: 0,
             isLoggedIn: false,
+            email: Cookies.get('user_email') || null,
+            message: '',
+            showSupportPopup: false,
+            popupText: '',
         }
         this.getUser();
       }
+
+      toggleSupportPopup() {
+        this.setState({
+          showSupportPopup: !this.state.showSupportPopup
+        });
+        this.toggleSupportPopup=this.toggleSupportPopup.bind(this)
+    }
 
       getUser = async () => {
         let userId = Cookies.get('user_id') || 0;
@@ -51,6 +63,29 @@ export default class Support extends Component {
         }
       }
 
+      sendTicket = (event) => {
+        let response;
+        var ticket = {
+            email: this.state.email,
+            message: this.state.message
+        }
+        fetch('/api/sendSupportTicket', {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(ticket)
+        })
+        .then(res => response = res.status)
+        .then(() => {
+          if (response === 200)
+            this.setState({showSupportPopup: true, popupText: "Заявка успешно отправлена!"})
+            else this.setState({showSupportPopup: true, popupText: "Что-то пошло не так. Заявка не отправлена."})
+        })
+        event.preventDefault()
+      }
+
     render() {
         return (
             <div className="CourseSupportPage">
@@ -58,9 +93,20 @@ export default class Support extends Component {
                     <div>
                         <SideNav userId={this.state.id} img={this.state.image} role={this.state.role}/>
                         <ContentHead text="Обратная связь"/>
-                        <div className="contentBody">
-
-                        </div>
+                        {this.state.showSupportPopup ? 
+                        <Popup
+                            text={this.state.popupText}
+                            closePopup={this.toggleSupportPopup.bind(this)}
+                        />
+                        : null
+                        } 
+                        <div className="supportSection">
+                            <form className="supportTicketForm" onSubmit={this.sendTicket}>
+                            <input id="userEmail" type="text" name="email" value={this.state.email} hidden />
+                            <input id="supportTicketTextInput" type="text" name="message" placeholder="Введите сообщение..." required onChange={(e) => this.setState({message: e.target.value})} onInvalid={(e) => {e.target.setCustomValidity("Это поле является обязательным")}} onInput={(e) => {e.target.setCustomValidity("")}}></input>
+                            <br/><button id="supportTicketButton">Отправить </button>
+                            </form>
+                        </div> 
                     </div>
                 ) : null
                 }

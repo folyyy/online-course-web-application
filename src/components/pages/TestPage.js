@@ -98,7 +98,7 @@ export default class Tests extends Component {
             for (let i = 0; i < userAnswer.length; i++) {
                 if (userAnswer[i] === this.state.test[item].correctanswer) {
                     numberOfCorrentAnswers++
-                    correctNumbers.push(i+1)
+                    correctNumbers.push(item+1)
                     correctAnswers.push(userAnswer[i])
                 }
             }

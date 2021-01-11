@@ -10,7 +10,7 @@ const pool = new Pool({
     database: 'online-course',
     user: 'postgres',
     password: process.env.DB_PASSWORD,
-    port: 5433,
+    port: 5432,
     idleTimeoutMillis: 1000,
     connectionTimeoutMillis: 1000,
 })
@@ -31,6 +31,26 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer( { storage: storage } );
+
+// Setting up nodemailer
+const nodemailer = require('nodemailer');
+var transport = {
+  service: process.env.MAIL_SERVICE,
+  auth: {
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS
+  }
+}
+
+var transporter = nodemailer.createTransport(transport)
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Nodemailer connected');
+  }
+});
 
 // Server start
 app.listen(port, () => console.log(`Server started on port ${port}.`));
@@ -509,3 +529,23 @@ app.post('/api/addFriend', function(request,response) {
       })
     }) 
 })
+
+app.post('/api/sendSupportTicket', urlencodedParser, function(request,response) {
+  const email = request.body.email
+  var message = request.body.message
+
+  var mail = {
+    from: process.env.MAIL_USER,
+    to: process.env.MAIL_USER,  
+    subject: `Support ticket from ${email}`,
+    html: message
+  }
+
+  transporter.sendMail(mail, (err, data) => {
+    if (err) {
+      response.sendStatus(404)
+    } else {
+      response.sendStatus(200)
+    }
+  })
+});
