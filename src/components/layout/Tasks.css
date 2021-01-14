@@ -1,0 +1,5 @@
+.tasksSection {
+    clear: both;
+    overflow: auto;
+    margin-left: 100px;
+  }

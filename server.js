@@ -138,6 +138,28 @@ app.post('/api/getUser', function(request,response) {
     }) 
 });
 
+app.post('/api/getUserByUuid', function(request,response) {
+  if(!request.body.uuid) return response.sendStatus(500);
+  pool.connect((err, client, done) => {
+      if (err) throw err
+      client.query(`SELECT email, firstname, lastname, phonenumber, dateofbirth, country, city, date, role, usergroup, image FROM "Users" WHERE uuid = $1`
+      , [request.body.uuid] , (err, res) => {
+        done()
+        if (err) {
+          console.log(err.stack)
+          response.sendStatus(500);
+        } else {
+          if(res.rowCount === '0') {
+          response.sendStatus(500)
+          }
+          else {
+              response.send(res.rows);
+          }
+        }
+      })
+    }) 
+});
+
 app.post('/api/updateUserImage', function(request,response) {
   if(!request.body.id || !request.body.imageURL) return response.sendStatus(404);
   pool.connect((err, client, done) => {
@@ -548,4 +570,25 @@ app.post('/api/sendSupportTicket', urlencodedParser, function(request,response) 
       response.sendStatus(200)
     }
   })
+});
+
+app.post('/api/getTasks', function(request,response) {
+  if(!request.body.id) return response.sendStatus(404);
+  pool.connect((err, client, done) => {
+      if (err) throw err
+      client.query(`SELECT * FROM "Tasks" WHERE manageruuid = $1 ORDER BY id`, [request.body.id] , (err, res) => {
+        done()
+        if (err) {
+          console.log(err.stack)
+          response.sendStatus(404);
+        } else {
+          if(res.rowCount === 0) {
+          response.sendStatus(404)
+          }
+          else {
+              response.send(res.rows);
+          }
+        }
+      })
+    }) 
 });

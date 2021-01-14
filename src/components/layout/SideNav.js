@@ -42,11 +42,10 @@ export default class SideNav extends Component {
                             </li>
                             {this.state.userRole === 'admin' || this.state.userRole === "manager" ?
                             <li> 
-                                <a href="/course/profile"><img id="categoryPic" src="/images/tasks.png" alt=""></img></a>
+                                <a href="/course/tasks"><img id="categoryPic" src="/images/tasks.png" alt=""></img></a>
                                 <div className="subCategory">
                                     <h3>Задачи</h3>
-                                    <p><a href="/course/profile">Список задач</a></p>
-                                    <p><a href="/course/profile">Поиск задач</a></p>
+                                    <p><a href="/course/tasks">Список задач</a></p>
                                 </div>
                             </li>
                             : null
@@ -56,10 +55,7 @@ export default class SideNav extends Component {
                                 <a href="/course/profile"><img id="categoryPic" src="/images/purchases.png" alt=""></img></a>
                                 <div className="subCategory">
                                     <h3>Покупки</h3>
-                                    <p><a href="/course/profile">Заказы</a></p>
                                     <p><a href="/course/profile">Покупки</a></p>
-                                    <p><a href="/course/profile">Платежи</a></p>
-                                    <p><a href="/course/profile">Чеки</a></p>
                                 </div>
                             </li>
                             : null
