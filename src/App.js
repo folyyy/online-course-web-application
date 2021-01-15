@@ -12,6 +12,7 @@ import TestPage from './components/pages/TestPage'
 import Chat from './components/pages/Chat'
 import Support from './components/pages/Support'
 import Tasks from './components/pages/Tasks'
+import Sales from './components/pages/Sales'
 
 export class App extends Component {
   render() {
@@ -30,6 +31,7 @@ export class App extends Component {
           <Route exact path='/course/chat' component={Chat}/>
           <Route exact path='/course/support' component={Support}/>
           <Route exact path='/course/tasks' component={Tasks}/>
+          <Route exact path='/course/sales' component={Sales}/>
           <Route
                 component={() => (
                   <div style={{ padding: 20 }}>Page not found</div>

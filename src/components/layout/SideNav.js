@@ -52,10 +52,10 @@ export default class SideNav extends Component {
                             }
                             {this.state.userRole === 'admin' || this.state.userRole === "manager" ?
                             <li> 
-                                <a href="/course/profile"><img id="categoryPic" src="/images/purchases.png" alt=""></img></a>
+                                <a href="/course/sales"><img id="categoryPic" src="/images/purchases.png" alt=""></img></a>
                                 <div className="subCategory">
                                     <h3>Покупки</h3>
-                                    <p><a href="/course/profile">Покупки</a></p>
+                                    <p><a href="/course/sales">Покупки</a></p>
                                 </div>
                             </li>
                             : null

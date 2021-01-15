@@ -592,3 +592,23 @@ app.post('/api/getTasks', function(request,response) {
       })
     }) 
 });
+
+app.get('/api/getSales', function(request, response) {
+  pool.connect((err, client, done) => {
+      if (err) throw err
+      client.query(`SELECT * FROM "Sales" ORDER BY id`, (err, res) => {
+        done()
+        if (err) {
+          console.log(err.stack)
+          response.sendStatus(404);
+        } else {
+          if(res.rowCount === 0) {
+          response.sendStatus(404)
+          }
+          else {
+              response.send(res.rows);
+          }
+        }
+      })
+    }) 
+});
