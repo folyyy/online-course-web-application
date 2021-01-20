@@ -5,7 +5,7 @@ import ContentHead from '../layout/ContentHead'
 import Cookies from 'js-cookie'
 import Popup from '../layout/Popup'
 
-export default class Tests extends Component {
+export default class TestPage extends Component {
     constructor(props) {
         super(props)
         this.state = {

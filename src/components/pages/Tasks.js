@@ -50,7 +50,7 @@ export class Tasks extends Component {
                 console.log("cant find user")
                 this.props.history.push('/')
             } else {
-                if (userEmail === response[0].email && userDate === response[0].date && response[0].role === 'manager') {
+                if ( (userEmail === response[0].email && userDate === response[0].date && response[0].role === 'manager') || response[0].role === 'admin') {
                     this.setState({
                         role: response[0].role || '',
                         userGroup: response[0].usergroup || '',

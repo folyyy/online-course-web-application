@@ -68,6 +68,16 @@ export default class SideNav extends Component {
                                     <p><a href="/course/support">Обратная связь</a></p>
                                 </div>
                             </li>
+                            {this.state.userRole === 'admin' ?
+                            <li> 
+                                <a href="/course/admin"><img id="categoryPic" src="/images/admin.png" alt=""></img></a>
+                                <div className="subCategory">
+                                    <h3>Админ-панель</h3>
+                                    <p><a href="/course/admin">Админ-панель</a></p>
+                                </div>
+                            </li>
+                            : null
+                            }
                         </ul>
                     </nav>
         )

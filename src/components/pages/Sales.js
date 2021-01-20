@@ -49,7 +49,7 @@ export class Sales extends Component {
                 console.log("cant find user")
                 this.props.history.push('/')
             } else {
-                if (userEmail === response[0].email && userDate === response[0].date && response[0].role === 'manager') {
+                if ( (userEmail === response[0].email && userDate === response[0].date && response[0].role === 'manager') || response[0].role === 'admin') {
                     this.setState({
                         role: response[0].role || '',
                         userGroup: response[0].usergroup || '',
@@ -66,7 +66,6 @@ export class Sales extends Component {
       }
 
     getTasks = async () => {
-        const data = {id: this.state.id}
         const request = await fetch('/api/getSales', {
             method: 'GET',
             headers: {
@@ -93,7 +92,7 @@ export class Sales extends Component {
                 {this.state.isLoggedIn ? (
                     <div>
                         <SideNav userId={this.state.id} img={this.state.image} role={this.state.role}/>
-                        <ContentHead text="Задачи"/>
+                        <ContentHead text="Покупки"/>
                         {this.state.showProfilePopup ? 
                         <ProfilePopup
                             uuid={this.state.clientUuid}

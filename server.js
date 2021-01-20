@@ -612,3 +612,152 @@ app.get('/api/getSales', function(request, response) {
       })
     }) 
 });
+
+app.post('/api/updateUserRole', urlencodedParser, function(request,response) {
+  pool.connect((err, client, done) => {
+    if (err) {
+      response.sendStatus(404)
+      throw err
+    }
+    client.query(`UPDATE "Users" SET "role" = $1 WHERE email = $2 RETURNING email`, [request.body.clientRole, request.body.clientEmail] , (err, res) => {
+      done()
+      if (err) {
+        console.log(err.stack)
+        response.sendStatus(404)
+      } else {
+        if (res.rowCount === 0) {
+          response.sendStatus(404)
+        } else response.sendStatus(200)
+        }
+    })
+  }) 
+});
+
+app.post('/api/updateUserGroup', urlencodedParser, function(request,response) {
+  pool.connect((err, client, done) => {
+    if (err) {
+      response.sendStatus(404)
+      throw err
+    }
+    client.query(`UPDATE "Users" SET "usergroup" = $1 WHERE email = $2`, [request.body.clientGroup, request.body.clientEmail] , (err, res) => {
+      done()
+      if (err) {
+        console.log(err.stack)
+        response.sendStatus(404)
+      } else {
+        if (res.rowCount === 0) {
+          response.sendStatus(404)
+        } else response.sendStatus(200)
+        }
+    })
+  }) 
+});
+
+app.post('/api/addLectures', urlencodedParser, function (request, response) {
+  if(!request.body) return response.sendStatus(404);
+  let lecture = {
+    clientGroup: request.body.clientGroup || null,
+    url: request.body.lectureUrl || null,
+    name: request.body.lectureName || null,
+    desc: request.body.lectureDesc || null,
+    thumb: request.body.lectureThumb || null,
+  }
+  pool.connect((err, client, done) => {
+      if (err) {
+        response.sendStatus(404)
+        throw err
+      }
+      client.query(`INSERT INTO "Lectures"(lectureurl, usergroup, name, description, thumbnail) VALUES($1,$2,$3,$4,$5)`,
+      [lecture.url, lecture.clientGroup, lecture.name, lecture.desc, lecture.thumb], (err) => {
+        done()
+        if (err) {
+          console.log(err.stack)
+          response.sendStatus(404);
+        } else response.sendStatus(200);
+      })
+    }) 
+});
+
+app.post('/api/addTests', urlencodedParser, function (request, response) {
+  if(!request.body) return response.sendStatus(404);
+  let test = {
+    clientGroup: request.body.clientGroup || null,
+    topic: request.body.topic || null,
+    number: request.body.testNumber || null,
+    question: request.body.question || null,
+    correctAnswer: request.body.correctAnswer || null,
+    answer1: request.body.answer1 || null,
+    answer2: request.body.answer2 || null,
+    answer3: request.body.answer3 || null,
+    answer4: request.body.answer4 || null,
+  }
+  pool.connect((err, client, done) => {
+      if (err) {
+        response.sendStatus(404)
+        throw err
+      }
+      client.query(`INSERT INTO "Tests"(question, correctanswer, answer1, answer2, answer3, answer4, topic, usergroup, testnumber) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+      [test.question, test.correctAnswer, test.answer1, test.answer2, test.answer3, test.answer4, test.topic, test.clientGroup, test.number], (err) => {
+        done()
+        if (err) {
+          console.log(err.stack)
+          response.sendStatus(404);
+        } else response.sendStatus(200);
+      })
+    }) 
+});
+
+app.post('/api/addTasks', urlencodedParser, function (request, response) {
+  if(!request.body) return response.sendStatus(404);
+  let task = {
+    setDate: request.body.setDate || null,
+    client: request.body.client || null,
+    clientUuid: request.body.clientUuid || null,
+    manager: request.body.manager || null,
+    managerUuid: request.body.managerUuid || null,
+    purpose: request.body.purpose || null,
+    status: request.body.status || null,
+    postponed: request.body.postponed || null,
+    endUntil: request.body.endUntil || null,
+  }
+  pool.connect((err, client, done) => {
+      if (err) {
+        response.sendStatus(404)
+        throw err
+      }
+      client.query(`INSERT INTO "Tasks"(setdate, client, clientuuid, manager, manageruuid, purpose, status, postponed, enduntil) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+      [task.setDate, task.client, task.clientUuid, task.manager, task.managerUuid, task.purpose, task.status, task.postponed, task.endUntil], (err) => {
+        done()
+        if (err) {
+          console.log(err.stack)
+          response.sendStatus(404);
+        } else response.sendStatus(200);
+      })
+    }) 
+});
+
+app.post('/api/addSales', urlencodedParser, function (request, response) {
+  if(!request.body) return response.sendStatus(404);
+  let sale = {
+    product: request.body.product || null,
+    clientUuid: request.body.clientUuid || null,
+    status: request.body.status || null,
+    activePeriod: request.body.activePeriod || null,
+    ends: request.body.ends || null,
+    totalSum: request.body.totalSum || null,
+  }
+  pool.connect((err, client, done) => {
+      if (err) {
+        response.sendStatus(404)
+        throw err
+      }
+      client.query(`INSERT INTO "Sales" (product, clientuuid, status, activeperiod, ends, totalsum) VALUES($1,$2,$3,$4,$5,$6)`,
+      [sale.product, sale.clientUuid, sale.status, sale.activePeriod, sale.ends, sale.totalSum], (err) => {
+        done()
+        if (err) {
+          console.log(err.stack)
+          response.sendStatus(404);
+        } else response.sendStatus(200);
+      })
+    }) 
+});
