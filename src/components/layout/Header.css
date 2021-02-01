@@ -1,5 +1,7 @@
 header > a > img {
     width: 100px;
     height: 100px;
-    margin-left: 45%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
 }

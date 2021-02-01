@@ -36,22 +36,85 @@
 }
 
 .imgPreview {
-  height: 100px;
-  width: 100px;
+  height: 128px;
+  width: 128px;
   margin-bottom: 10px;
-  border-left: 5px solid #CFCDD1;
-  border-right: 5px solid #CFCDD1;
-  border-top: 5px solid #CFCDD1;
-  border-bottom: 5px solid #CFCDD1;
+  border: 3px solid #000000b6;
+  border-radius: 5px;
 }
 
 #previewImage {
-    width: 100px;
-    height: 100px;
+    width: 128px;
+    height: 128px;
     text-align: center;
+}
+
+.fileInput {
+  margin: 0;
+  color: transparent;
+}
+
+.fileInput::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.fileInput::before {
+  content: 'Выберите файл';
+  height: 20px;
+  width: 106px;
+  color: white;
+  display: inline-block;
+  background: #4CAF50;
+  border: none;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: center;
+}
+
+.fileInput:hover::before {
+  cursor: pointer;
+  background-color: #306ae7dc;
+}
+
+.fileInput:focus {
+  outline: none;
 }
 
 .imageButton {
   cursor: pointer;
-  margin-left: 10px;
+  height: 30px;
+  width: 122px;
+  display: block;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  border: none;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+}
+
+.imageButton:hover {
+  cursor: pointer;
+  background-color: #306ae7dc;
+}
+
+.imageButton:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 500px) {
+  .userInfo {
+    float: left;
+    width: 100%;
+  }
+  .userInfo > p > label {
+    font-size: 0.9rem;
+  }
+  .userInfo > p > label > input {
+    width: 80%;
+  }
 }

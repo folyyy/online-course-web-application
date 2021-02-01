@@ -79,7 +79,7 @@ export default class Lectures extends Component {
                     <div>
                         <SideNav userId={this.state.id} img={this.state.image} role={this.state.role}/>
                         <ContentHead text="Видеолекции"/>
-                        <div className="contentBody">
+                        <div className="lecturesBody">
                             {this.state.list.length ? (                            
                                 <div className="lecturesList">
                                     <ReactPlayer id="ReactPlayer" width="90%" height="720px" controls={true} url={this.state.currentVideo} />
@@ -87,7 +87,7 @@ export default class Lectures extends Component {
                                     {this.state.list.map((item) => {
                                         return(
                                             <div className="listItem" key={item.lectureurl}>
-                                                <h3 onClick={() => this.setState({currentVideo: item.lectureurl})}>{item.name}</h3>
+                                                <h3 onClick={() => this.setState({currentVideo: item.lectureurl})}>{item.name}</h3><br/>
                                                 <img src={item.thumbnail} alt='' onClick={() => this.setState({currentVideo: item.lectureurl})}></img>
                                                 <h4>{item.description}</h4>
                                             </div>

@@ -95,11 +95,9 @@ class Home extends Component {
             <input className="textInput" type="email" name="email" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} placeholder="Введите эл.адрес" required onInvalid={(e) => {e.target.setCustomValidity("Введите верный email адрес")}} onInput={(e) => {e.target.setCustomValidity("")}}></input>
             <input className="textInput" type="password" name="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="Введите пароль" required onInvalid={(e) => {e.target.setCustomValidity("Это поле является обязательным")}} onInput={(e) => {e.target.setCustomValidity("")}}/>
             <button id="submitButton">Войти</button>
-            <a id="passResetLink" href="/reset">Восстановить пароль</a>
           </form>
-        </div>
-        <div className="contactsLink">
-        <a id="contactsLink" href="/contacts">Обратная связь</a>
+          <a id="passResetLink" href="/reset">Восстановить пароль</a><br/><br/>
+          <a id="contactsLink" href="/contacts">Обратная связь</a>
         </div>
         <h2>Если вы забыли пароль или не можете войти, следуйте шагам ниже:</h2>
         <ul>

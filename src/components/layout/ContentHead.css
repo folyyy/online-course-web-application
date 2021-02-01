@@ -9,7 +9,7 @@
   .contentHead > h1{
     float: left;
     margin-left: 25px;
-    color: #000000b6;
+    color: #052031b6;
     font-size: 1.8rem;
   }
   
@@ -28,3 +28,14 @@
     font-size: 1rem;
   }
   
+  @media screen and (max-width: 500px) {
+    .contentHead > h1{
+      font-size: 1rem;
+    }
+    .contentHead > button {
+      float: right;
+      margin: 11px 15px 0 0;
+      width: 75px;
+      font-size: 1rem;
+    }
+}

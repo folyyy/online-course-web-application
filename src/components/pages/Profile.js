@@ -22,6 +22,8 @@ export default class Profile extends Component {
             image: '',
             id: 0,
             isLoggedIn: false,
+            imagePreviewUrl: '',
+            file: ''
         }
       }
 
@@ -53,7 +55,7 @@ export default class Profile extends Component {
                         dateOfBirth: response[0].dateofbirth || '',
                         country: response[0].country || '',
                         city: response[0].city || '',
-                        date: response[0].date || '',
+                        date: new Date(response[0].date).toLocaleDateString('ru-RU') || '',
                         role: response[0].role || '',
                         userGroup: response[0].usergroup || '',
                         image: response[0].image || '',
@@ -126,7 +128,7 @@ export default class Profile extends Component {
         let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
         if (imagePreviewUrl) {
-          $imagePreview = (<img id="previewImage" src={imagePreviewUrl} alt='/images/cat.png' />);
+          $imagePreview = (<img id="previewImage" src={imagePreviewUrl} alt='Аватара нет' />);
         } else {
           $imagePreview = (<img id="previewImage" src={this.state.image} alt='Аватара нет' />);
         }
@@ -139,21 +141,21 @@ export default class Profile extends Component {
                 <ContentHead text="Мой профиль"/>
                 <div className="contentBody">
                     <div className="userInfo">
-                    <p><label htmlFor="email">E-mail:<input id="email" type="email" name="email" value={this.state.email} disabled></input></label></p>
-                    <p><label htmlFor="firstname">Имя:<input id="firstname" type="text" name="firstname" value={this.state.firstName} disabled></input></label></p>
-                    <p><label htmlFor="lastname">Фамилия:<input id="lastname" type="text" name="lastname" value={this.state.lastName} disabled></input></label></p>
-                    <p><label htmlFor="phone">Телефон:<input id="phone" type="tel" name="number" value={this.state.phoneNumber} disabled></input></label></p>
-                    <p><label htmlFor="dateOfBirth">Дата рождения:<input id="dateOfBirth" type="text" name="dateOfBirth" value={this.state.dateOfBirth} disabled></input></label></p>
-                    <p><label htmlFor="country">Страна:<input id="country" type="text" name="country" value={this.state.country} disabled></input></label></p>
-                    <p><label htmlFor="city">Город:<input id="city" type="text" name="city" value={this.state.city} disabled></input></label></p>
-                    <p><label htmlFor="dateOfRegister">Дата регистрации:<input id="dateOfRegister" type="text" name="dateOfRegister" value={this.state.date} disabled></input></label></p>
-                    <p><label htmlFor="role">Роль:<input id="role" type="text" name="role" value={this.state.role} disabled></input></label></p>
-                    <p><label htmlFor="group">Группа:<input id="userGroup" type="text" name="userGroup" value={this.state.userGroup} disabled></input></label></p>
+                    <p><label htmlFor="email">E-mail:<input id="email" type="email" name="email" value={this.state.email || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="firstname">Имя:<input id="firstname" type="text" name="firstname" value={this.state.firstName || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="lastname">Фамилия:<input id="lastname" type="text" name="lastname" value={this.state.lastName || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="phone">Телефон:<input id="phone" type="tel" name="number" value={this.state.phoneNumber || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="dateOfBirth">Дата рождения:<input id="dateOfBirth" type="text" name="dateOfBirth" value={this.state.dateOfBirth || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="country">Страна:<input id="country" type="text" name="country" value={this.state.country || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="city">Город:<input id="city" type="text" name="city" value={this.state.city || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="dateOfRegister">Дата регистрации:<input id="dateOfRegister" type="text" name="dateOfRegister" value={this.state.date || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="role">Роль:<input id="role" type="text" name="role" value={this.state.role || 'Не указано'} disabled></input></label></p>
+                    <p><label htmlFor="group">Группа:<input id="userGroup" type="text" name="userGroup" value={this.state.userGroup || 'Не указано'} disabled></input></label></p>
                     </div>
                     <div className="infoChange">
                         <p><label>Аватар:</label></p>
                         <div className="imgPreview">{$imagePreview}</div>
-                        <input type="file" accept="image/*" onChange={this.handleImageChange}></input>
+                        <input className="fileInput" type="file" accept="image/*" onChange={this.handleImageChange}></input><br/>
                         <button className="imageButton" onClick={this.handleImageUpload}>Обновить</button>
                         <button className="imageButton" onClick={this.handleImageDelete}>Удалить</button>
                     </div>

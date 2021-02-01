@@ -1,6 +1,8 @@
 .contactsSection {
-    width: 50%;
-    height: fit-content;
+    min-width: 50%;
+    width: fit-content;
+    min-height: 130px;
+    display: block;
     margin: 0 auto;
     background-color: #f1f0f0b4;
     border-radius: 5px;
@@ -13,4 +15,15 @@
 .contactsSection > h1 {
     color: rgba(0, 0, 0, 0.800);
     padding-top: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    .contactsSection {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    .contactsSection > * {
+        padding: 0 10% 0 5%;
+    }
 }

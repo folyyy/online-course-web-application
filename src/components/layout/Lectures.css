@@ -1,11 +1,21 @@
+.lecturesBody {
+    clear: both;
+    overflow: auto;
+    margin-left: 75px;
+  }
+
 .lecturesList {
     background-color: #052031d0;
-    width: 98.7%;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
     min-height: 300px;
     border-radius: 5px;
+    border: 1px solid white;
 }
 
 #ReactPlayer {
+    display: block;
     margin: 0 auto;
     margin-top: 25px;
     padding-top: 25px;
@@ -19,16 +29,18 @@
 }
 
 .listItem > img {
-    margin-left: 20px;
-    margin-bottom: 20px;
-    float: left;
+    display: block;
+    margin: 0 auto;
     cursor: pointer;
 }
 
 .listItem > h3 {
-    margin-left: 20px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
     color: rgba(255, 255, 255, 0.95);
     cursor: pointer;
+    text-align: center;
 }
 
 .listItem > h3:active {
@@ -36,6 +48,21 @@
 }
 
 .listItem > h4 {
-    margin-left: 150px;
+    display: block;
+    margin: 0 auto;
+    margin: 20px 0 20px 20px;
     color: rgba(255, 255, 255, 0.8);
 }
+
+@media screen and (max-width: 590px) {
+    .lecturesList {
+        width: 100%;
+        border-radius: 0;
+    }
+    #ReactPlayer {
+        display: unset !important;
+    }
+    .listItem {
+        width: 80%;
+    }
+  }

@@ -1,6 +1,8 @@
 .registerSection {
-    width: 50%;
+    min-width: 50%;
+    width: fit-content;
     height: fit-content;
+    display: block;
     margin: 0 auto;
     background-color: #f1f0f0b4;
     border-radius: 5px;
@@ -52,4 +54,22 @@
 
 #rule {
     color: #757575;
+}
+
+@media screen and (max-width: 500px) {
+    .registerSection {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    .registerSection > * {
+        padding: 0 10% 0 5%;
+    }
+    #registerSubmitButton {
+        width: 70%;
+        padding: 0;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
 }

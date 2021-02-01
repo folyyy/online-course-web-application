@@ -1,5 +1,5 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, 'Oswald', 'Montserrat', sans-serif;
 }
 
 a {
@@ -11,15 +11,11 @@ a:hover {
     text-decoration: underline;
 }
 
-header > a > img {
-    width: 100px;
-    height: 100px;
-    margin-left: 45%;
-}
-
 .loginSection {
-    width: 50%;
-    height: 250px;
+    min-width: 50%;
+    width: fit-content;
+    min-height: 300px;
+    display: block;
     margin: 0 auto;
     background-color: #f1f0f0b4;
     border-radius: 5px;
@@ -80,17 +76,13 @@ header > a > img {
     float: right;
 }
 
-.contactsLink {
-    margin: 0 auto;
-    padding-top: 25px;
-}
-
-.contactsLink > a {
-    margin-left: 45%;
+#contactsLink {
+    display: block;
+    float: right;
 }
 
 h2 {
-    margin-left: 10%;
+    margin-left: 6%;
     color: rgba(0, 0, 0, 0.800);
 }
 
@@ -100,4 +92,32 @@ ul {
 
 ul > li {
     padding: 10px 0 0 45px;
+}
+
+@media screen and (max-width: 500px) {
+    .loginSection {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    .loginSection > * {
+        padding: 0 10% 0 5%;
+    }
+    #submitButton {
+        height: 30px;
+        width: 70%;
+        padding: 0;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    h2 {
+        margin-left: 5px;
+    }
+    ul {
+        margin-left: 0;
+    }
+    ul > li {
+        padding: 10px 0 0 0;
+    }
 }

@@ -18,6 +18,7 @@ export default class TestPage extends Component {
             test: [],
             showTestPopup: false,
             popupText: '',
+            userAnswers: []
         }
         this.getUser();
       }
@@ -84,28 +85,26 @@ export default class TestPage extends Component {
       }
 
       checkTest = () => {
-        let correctAnswers = []
         let numberOfCorrentAnswers = 0
         let correctNumbers = []
-        let answers = document.getElementsByName("answer")
-        let userAnswer = []
-        for (let i = 0; i < answers.length; i++) {
-            if (answers[i].checked)
-            userAnswer.push(answers[i].value)
-        }
-
-        for (let item = 0; item < this.state.test.length; item++) {
-            for (let i = 0; i < userAnswer.length; i++) {
-                if (userAnswer[i] === this.state.test[item].correctanswer) {
-                    numberOfCorrentAnswers++
-                    correctNumbers.push(item+1)
-                    correctAnswers.push(userAnswer[i])
+        let correctAnswers = []
+        this.state.userAnswers.forEach((item) => {
+            this.state.test.forEach((i) => {
+                if (item.question === i.question) {
+                    if (item.answer === i.correctanswer) {
+                        numberOfCorrentAnswers++
+                        correctNumbers.push(i.testnumber)
+                        correctAnswers.push(item.answer)
+                    }
                 }
-            }
+            })
+        })
+        this.setState({showTestPopup: true, popupText: `Результаты теста: ${numberOfCorrentAnswers}/${this.state.test.length} правильных ответов. Правильные ответы: ${correctNumbers}`})
         }
 
-        this.setState({showTestPopup: true, popupText: `Результаты теста: ${numberOfCorrentAnswers}/${this.state.test.length} правильных ответов. Правильные ответы: ${correctNumbers}`})
-
+        onAnswerChanged = (testQuestion, testAnswer) => {
+            let index = this.state.userAnswers.findIndex(item => item.question === testQuestion)
+            this.setState(({userAnswers}) => userAnswers[index] = {question: testQuestion, answer: testAnswer})
         }
 
     render() {
@@ -125,25 +124,34 @@ export default class TestPage extends Component {
                         <div className="contentBody">
                             {this.state.test.length ? (
                                 <div>
+                                    <form className="testsItemForm">
                                         {this.state.test.map((item) => {
+                                            if (this.state.userAnswers.length < this.state.test.length)
+                                                this.state.userAnswers.push({question: item.question})
                                             return(
-                                                    <form className="testsItemForm" key={item.id}>{item.testnumber}. {item.question}
-                                                        <li>
-                                                            <input name="answer" id="answer1" type='radio' value={item.answer1}></input>{item.answer1}
-                                                        </li>
-                                                        <li>
-                                                            <input name="answer" id="answer2" type='radio' value={item.answer2}></input>{item.answer2}
-                                                        </li>
-                                                        <li>
-                                                            <input name="answer" id="answer3" type='radio' value={item.answer3}></input>{item.answer3}
-                                                        </li>
-                                                        <li>
-                                                            <input name="answer" id="answer4" type='radio' value={item.answer4}></input>{item.answer4}
-                                                        </li>
-                                                    </form>
+                                                    <div key={item.id}>
+                                                        <h2>{item.testnumber}. {item.question}</h2>
+                                                        <div className="checkBox">
+                                                            <input className="answer" name={`answer1${item.id}`} id={`answer1${item.id}`} type='radio' value={item.answer1} onChange={() => this.onAnswerChanged(item.question, item.answer1)}></input>
+                                                            <label htmlFor={`answer1${item.id}`}>{item.answer1}</label>
+                                                        </div>
+                                                        <div className="checkBox">
+                                                            <input className="answer" name={`answer1${item.id}`} id={`answer2${item.id}`} type='radio' value={item.answer2} onChange={() => this.onAnswerChanged(item.question, item.answer2)}></input>
+                                                            <label htmlFor={`answer2${item.id}`}>{item.answer2}</label>
+                                                        </div>
+                                                        <div className="checkBox">
+                                                            <input className="answer" name={`answer1${item.id}`} id={`answer3${item.id}`} type='radio' value={item.answer3} onChange={() => this.onAnswerChanged(item.question, item.answer3)}></input>
+                                                            <label htmlFor={`answer3${item.id}`}>{item.answer3}</label>
+                                                        </div>
+                                                        <div className="checkBox">
+                                                            <input className="answer" name={`answer1${item.id}`} id={`answer4${item.id}`} type='radio' value={item.answer4} onChange={() => this.onAnswerChanged(item.question, item.answer4)}></input>
+                                                            <label htmlFor={`answer4${item.id}`}>{item.answer4}</label>
+                                                        </div>
+                                                    </div>
                                             );
                                         })}
-                                        <button onClick={this.checkTest}>Отправить</button>
+                                    </form>
+                                    <button id="testConfirmButton" onClick={this.checkTest}>Отправить</button>
                                 </div>
                             ) : null  
                         }

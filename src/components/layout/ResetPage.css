@@ -1,6 +1,8 @@
 .passResetSection {
-    width: 50%;
-    height: fit-content;
+    min-width: 50%;
+    width: fit-content;
+    min-height: 240px;
+    display: block;
     margin: 0 auto;
     background-color: #f1f0f0b4;
     border-radius: 5px;
@@ -34,7 +36,7 @@
 
 #resetSubmitButton {
     height: 30px;
-    width: 20%;
+    width: fit-content;
     background-color: #4CAF50;
     border: none;
     text-align: center;
@@ -53,4 +55,23 @@
 
 #rule {
     color: #757575;
+}
+
+@media screen and (max-width: 500px) {
+    .passResetSection {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    .passResetSection > * {
+        padding: 0 10% 0 5%;
+    }
+    #resetSubmitButton {
+        height: 30px;
+        width: 70%;
+        padding: 0;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
 }
