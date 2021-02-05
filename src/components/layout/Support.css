@@ -1,16 +1,18 @@
 .supportSection {
     width: 50%;
     height: 300px;
+    display: block;
     margin: 0 auto;
-    margin-top: 300px;
+    margin-top: 30px;
     background-color: #f1f0f0b4;
     border-radius: 5px;
 }
 
 #supportTicketTextInput {
-    margin: 10px 10px 10px 10px;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
     height: 240px;
-    width: 97%;
 }
 
 #supportTicketTextInput:focus {

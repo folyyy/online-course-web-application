@@ -102,7 +102,7 @@ export default class Support extends Component {
                         } 
                         <div className="supportSection">
                             <form className="supportTicketForm" onSubmit={this.sendTicket}>
-                            <input id="userEmail" type="text" name="email" value={this.state.email} hidden />
+                            <input id="userEmail" type="text" name="email" defaultValue={this.state.email} hidden />
                             <input id="supportTicketTextInput" type="text" name="message" placeholder="Введите сообщение..." required onChange={(e) => this.setState({message: e.target.value})} onInvalid={(e) => {e.target.setCustomValidity("Это поле является обязательным")}} onInput={(e) => {e.target.setCustomValidity("")}}></input>
                             <br/><button id="supportTicketButton">Отправить </button>
                             </form>
