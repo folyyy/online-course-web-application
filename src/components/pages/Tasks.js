@@ -4,7 +4,13 @@ import SideNav from '../layout/SideNav'
 import Cookies from 'js-cookie'
 import ContentHead from '../layout/ContentHead'
 import ProfilePopup from '../layout/ProfilePopup'
-
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 export class Tasks extends Component {
     constructor(props) {
@@ -103,7 +109,39 @@ export class Tasks extends Component {
                         : null
                         } 
                         <div className="tasksSection">
-                            <table>
+                        <TableContainer component={Paper}>
+                            <Table className='table' size="medium" aria-label="a dense table">
+                                <TableHead>
+                                <TableRow>
+                                    <TableCell>Номер</TableCell>
+                                    <TableCell align="right">Поставлена</TableCell>
+                                    <TableCell align="right">Клиент</TableCell>
+                                    <TableCell align="right">Менеджер</TableCell>
+                                    <TableCell align="right">Суть&nbsp;задачи</TableCell>
+                                    <TableCell align="right">Статус</TableCell>
+                                    <TableCell align="right">Отложена&nbsp;до</TableCell>
+                                    <TableCell align="right">Завершить&nbsp;до</TableCell>
+                                </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                {this.state.tasks.map((row) => (
+                                    <TableRow key={row.id}>
+                                    <TableCell component="th" scope="row">
+                                        {row.id}
+                                    </TableCell>
+                                    <TableCell align="right">{row.setdate}</TableCell>
+                                    <TableCell className="userCell" align="right" onClick={() => this.handleClick(row.clientuuid)}>{row.client}</TableCell>
+                                    <TableCell align="right">{row.manager}</TableCell>
+                                    <TableCell align="right">{row.purpose}</TableCell>
+                                    <TableCell align="right">{row.status}</TableCell>
+                                    <TableCell align="right">{row.postponed}</TableCell>
+                                    <TableCell align="right">{row.enduntil}</TableCell>
+                                    </TableRow>
+                                ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                            {/* <table>
                                 <thead>
                                 <tr>
                                     <td>ID</td>
@@ -135,7 +173,7 @@ export class Tasks extends Component {
                                         </tbody>
                                     ) : null
                                     }
-                            </table>
+                            </table> */}
                         </div> 
                     </div>
                 ) : null

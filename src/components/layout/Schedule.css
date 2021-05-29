@@ -34,11 +34,18 @@
 }
 
 #handleScheduleButton {
-    height: 30px;
     width: fit-content;
     background-color: #000000b6;
+    margin-bottom: 50px;
+    cursor: pointer;
+    height: 25px;
+    width: 122px;
+    display: block;
+    margin-left: 14px;
+    margin-top: 10px;
+    background-color: #4CAF50;
     border: none;
     text-align: center;
     color: white;
-    margin-bottom: 50px;
+    font-weight: 700;
 }

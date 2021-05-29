@@ -4,6 +4,14 @@ import SideNav from '../layout/SideNav'
 import Cookies from 'js-cookie'
 import ContentHead from '../layout/ContentHead'
 import ProfilePopup from '../layout/ProfilePopup'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
 
 export class Sales extends Component {
     constructor(props) {
@@ -62,10 +70,10 @@ export class Sales extends Component {
         } else {
             this.props.history.push('/')
         }
-        this.getTasks()
+        this.getSales()
       }
 
-    getTasks = async () => {
+    getSales = async () => {
         const request = await fetch('/api/getSales', {
             method: 'GET',
             headers: {
@@ -101,37 +109,36 @@ export class Sales extends Component {
                         : null
                         } 
                         <div className="salesSection">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>Номер</td>
-                                    <td>Продукт</td>
-                                    <td>ID пользователя</td>
-                                    <td>Статус</td>
-                                    <td>Период</td>
-                                    <td>Заканчивается</td>
-                                    <td>Сумма оплат</td>
-                                </tr>
-                                </thead>
-                                    {this.state.sales.length ? (
-                                        <tbody>
-                                            {this.state.sales.map((item) => {
-                                                return (
-                                                    <tr key={item.id}>
-                                                    <td>{item.id}</td>
-                                                    <td>{item.product}</td>
-                                                    <td onClick={() => this.handleClick(item.clientuuid)}>{item.clientuuid}</td>
-                                                    <td>{item.status}</td>
-                                                    <td>{item.activeperiod}</td>
-                                                    <td>{item.ends}</td>
-                                                    <td>{item.totalsum}</td>
-                                                    </tr>                                   
-                                                );
-                                            })}
-                                        </tbody>
-                                    ) : null
-                                    }
-                            </table>
+                        <TableContainer component={Paper}>
+                            <Table className='table' size="medium" aria-label="a dense table">
+                                <TableHead>
+                                <TableRow>
+                                    <TableCell>Номер</TableCell>
+                                    <TableCell align="right">Продукт</TableCell>
+                                    <TableCell align="right">Пользователь</TableCell>
+                                    <TableCell align="right">Статус</TableCell>
+                                    <TableCell align="right">Период</TableCell>
+                                    <TableCell align="right">Заканчивается</TableCell>
+                                    <TableCell align="right">Сумма оплат</TableCell>
+                                </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                {this.state.sales.map((row) => (
+                                    <TableRow key={row.id}>
+                                    <TableCell component="th" scope="row">
+                                        {row.id}
+                                    </TableCell>
+                                    <TableCell align="right">{row.product}</TableCell>
+                                    <TableCell className="userCell" align="right" onClick={() => this.handleClick(row.clientuuid)}>{row.client_name}</TableCell>
+                                    <TableCell align="right">{row.status}</TableCell>
+                                    <TableCell align="right">{row.activeperiod}</TableCell>
+                                    <TableCell align="right">{row.ends}</TableCell>
+                                    <TableCell align="right">{row.totalsum}</TableCell>
+                                    </TableRow>
+                                ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
                         </div> 
                     </div>
                 ) : null

@@ -50,8 +50,8 @@ export default class ScheduleAddComponent extends Component {
         return (
             <div className="handleSchedule">
                 <form onSubmit={this.handleFileUpload} encType="multipart/form-data">
-                    <input type="file" name="filedata" onChange={this.handleFileChange} required></input>
                     <input type="text" name="userGroup" placeholder="Введите группу" onChange={(e) => this.setState({group: e.target.value})} required onInvalid={(e) => {e.target.setCustomValidity("Необходим ввод группы")}} onInput={(e) => {e.target.setCustomValidity("")}} />
+                    <input className="fileInput" type="file" name="filedata" onChange={this.handleFileChange} required></input>
                     <button id="handleScheduleButton" className="imageButton">Загрузить</button>
                 </form>
                 <form action="/api/deleteScheduleFile" method="POST">

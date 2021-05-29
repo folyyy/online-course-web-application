@@ -33,7 +33,7 @@ export default class UsersField extends Component {
             } else {
                 this.setState({usersList: response})
             }
-        } else this.props.history.push('/')
+        } 
     }
     
     handleFriendAdding = async e => {

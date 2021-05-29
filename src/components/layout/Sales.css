@@ -3,3 +3,12 @@
     overflow: auto;
     margin-left: 100px;
   }
+
+.table {
+    min-width: 650,
+}
+
+.userCell:hover {
+  cursor: pointer;
+  color: #4CAF50;
+}

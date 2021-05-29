@@ -278,11 +278,12 @@ export class Admin extends Component {
         const data = {
             product: this.state.product,
             clientUuid: this.state.clientUuid,
-            saleStatus: this.state.saleStatus,
+            status: this.state.saleStatus,
             activePeriod: this.state.activePeriod,
             ends: this.state.ends,
             totalSum: this.state.totalSum,
         }
+        console.log(data)
         fetch('/api/addSales', {
             method: 'POST',
             headers: {
